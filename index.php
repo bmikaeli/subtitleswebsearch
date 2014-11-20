@@ -17,9 +17,13 @@ $app->get('/', function () use ($app){
 });
 
 
-$app->post('/get', function (Request $request) use ($app) {
+$app->get('/get', function (Request $request) use ($app) {
+var_dump($request->get('filename'));
     $filename = $request->get('filename');
-    exec('subliminal -l fr -- ' . $filename);
+   $test2 = passthru('/usr/local/bin/subliminal > /home/bmikaeli/sdfds.txt', $test);
+var_dump($test, $test2);
+die;
+    exec("touch /home/bmikaeli/sds");
     if (!file_exists('/tmp/subtitle/' . $filename)) {
         $app->abort(404);
     }
